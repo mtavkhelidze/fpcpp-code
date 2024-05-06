@@ -29,3 +29,4 @@ include_directories(
 
 enable_testing()
 add_subdirectory(ctfp)
+add_subdirectory(fpincpp)
