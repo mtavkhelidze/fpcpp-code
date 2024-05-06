@@ -6,6 +6,8 @@
 #define CTFP_IDENTITY_H
 
 template<typename T>
-auto identity(T x) -> T { return x; }
+auto identity(T x) -> T {
+    return x;
+}
 
-#endif // CTFP_IDENTITY_H
+#endif// CTFP_IDENTITY_H
