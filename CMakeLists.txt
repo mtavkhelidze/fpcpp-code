@@ -8,6 +8,8 @@ message(STATUS "CMake version   : " ${CMAKE_VERSION})
 message(STATUS "Processor       : " ${CMAKE_SYSTEM_PROCESSOR})
 message(STATUS "Operating System: " ${CMAKE_SYSTEM})
 
+SET(CMAKE_CXX_FLAGS "-Wall -Wextra -Werror")
+
 include(FetchContent)
 FetchContent_Declare(
         googletest
@@ -15,9 +17,15 @@ FetchContent_Declare(
         GIT_TAG v1.14.0
 )
 FetchContent_MakeAvailable(googletest)
-SET(CMAKE_CXX_FLAGS "-Wall -Wextra -Werror")
 include(GoogleTest)
-add_subdirectory("rapidcheck")
-enable_testing()
 
+SET(CMAKE_CXX_FLAGS_DEBUG "-DRC_ENABLE_GTEST=ON")
+add_subdirectory("rapidcheck")
+
+include_directories(
+        rapidcheck/include
+        rapidcheck/extras/gtest/include
+)
+
+enable_testing()
 add_subdirectory(ctfp)
